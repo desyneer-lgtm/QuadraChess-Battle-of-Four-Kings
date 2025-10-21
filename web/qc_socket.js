@@ -2,15 +2,10 @@
 // QuadraChess Socket Connection
 // ===============================
 
-// 👇 Replace this with your actual Render server URL
-// Example: "https://quadrachess.onrender.com"
-const RENDER_SERVER_URL = "https://quadrachess-battle-of-four-kings.onrender.com"; 
-
-// Socket wrapper object
+// Automatically connect to same server
 const QC_Socket = {
-  // Initialize the connection to your backend
-  init: function(serverUrl = RENDER_SERVER_URL) {
-    this.socket = io(serverUrl, {
+  init: function() {
+    this.socket = io({
       transports: ["websocket", "polling"]
     });
 
@@ -23,24 +18,16 @@ const QC_Socket = {
     });
   },
 
-  // Send a move (piece movement or special action)
   sendMove: function(data) {
-    if (!this.socket) {
-      console.error("Socket not initialized!");
-      return;
-    }
+    if (!this.socket) return console.error("Socket not initialized!");
     this.socket.emit("move", data);
   },
 
-  // Listen for moves from other players
   onMove: function(handler) {
-    if (!this.socket) {
-      console.error("Socket not initialized!");
-      return;
-    }
+    if (!this.socket) return console.error("Socket not initialized!");
     this.socket.on("move", handler);
   }
 };
 
-// Initialize immediately when the page loads
+// Start connection when the page loads
 QC_Socket.init();
