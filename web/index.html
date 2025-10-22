@@ -2,21 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuadraChess: Battle of Four Kings</title>
+  <title>QuadraChess: Solo Mode</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="lobby" class="glass-panel">
-    <h1>QuadraChess</h1>
-    <input id="playerName" placeholder="Enter your name" />
-    <button id="createRoom">Create Room</button>
-    <button id="joinRoom">Join Room</button>
-    <input id="roomCode" placeholder="Room code" style="display:none;" />
-  </div>
-  <canvas id="board"></canvas>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="qc_socket.js"></script>
-  <script src="lobby.js"></script>
+  <h1>♔ QuadraChess: Battle of Four Kings</h1>
+  <button id="startGame">Start Game</button>
+
+  <script>
+    document.getElementById("startGame").onclick = () => {
+      window.location.href = "game.html";
+    };
+  </script>
 </body>
 </html>
