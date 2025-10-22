@@ -1,31 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>QuadraChess - Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>QuadraChess – Solo Mode</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="game">
-    <h2>♟️ QuadraChess Room</h2>
-    <p id="roomDisplay"></p>
-    <canvas id="board" width="600" height="600"></canvas>
-  </div>
+  <h2>QuadraChess: Solo Mode (You = South)</h2>
+  <canvas id="board" width="640" height="640"></canvas>
+  <p id="status"></p>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="qc_socket.js"></script>
-  <script>
-    // Get room from the URL
-    const params = new URLSearchParams(window.location.search);
-    const roomCode = params.get("room");
-
-    document.getElementById("roomDisplay").textContent = `Room Code: ${roomCode}`;
-    QC_Socket.init();
-
-    // Example chess move listener
-    QC_Socket.onMove((data) => {
-      console.log("Move received:", data);
-    });
-  </script>
+  <script src="quadraChessAI.js"></script>
 </body>
 </html>
